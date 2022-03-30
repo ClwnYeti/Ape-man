@@ -1,6 +1,3 @@
-import math
-
-
 class Brent:
     def __init__(self, func, a, b, e, max_iter):
         self._func = func
@@ -10,7 +7,7 @@ class Brent:
         self._max_iter = max_iter
 
     @staticmethod
-    def top_of_parabola(func, x, w, v):
+    def _top_of_parabola(func, x, w, v):
         fx = func(x)
         fw = func(w)
         fv = func(v)
@@ -31,7 +28,7 @@ class Brent:
                 break
             g = d_prv / 2
             d_prv = d_cur
-            u = Brent.top_of_parabola(func, x, w, v)
+            u = Brent._top_of_parabola(func, x, w, v)
             if u is None or abs(u - x) > g or u < a or u > b:
                 if x < (a + b) / 2:
                     u = x + r * (b + x)
@@ -61,8 +58,3 @@ class Brent:
 
     def do(self):
         return Brent.do_method(self._func, self._a, self._b, self._e, self._max_iter)
-
-
-f = lambda x: x ** 2 + 3 * x - 4
-brent = Brent(f, 2, 5, 10e-5, 50)
-print(brent.do())
