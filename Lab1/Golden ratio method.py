@@ -1,3 +1,6 @@
+import math
+
+
 class GoldenRatio:
     def __init__(self, func):
         self._func = func
@@ -29,3 +32,6 @@ class GoldenRatio:
 
     def do(self, left, right, e):
         return GoldenRatio.do_method(self._func, left, right, e)
+
+
+print(GoldenRatio.do_method((lambda x: x**2 * math.e ** math.sin(x)), -1, 1, 0.01))

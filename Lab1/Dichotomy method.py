@@ -1,3 +1,6 @@
+import math
+
+
 class Dichotomy:
     def __init__(self, func):
         self._func = func
@@ -18,4 +21,7 @@ class Dichotomy:
 
     def do(self, left, right, e):
         return Dichotomy.do_method(self._func, left, right, e)
+
+
+print(Dichotomy.do_method((lambda x: x**2 * math.e ** math.sin(x)), -1, 1, 0.01))
 
