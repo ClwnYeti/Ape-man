@@ -1,9 +1,6 @@
 class GoldenRatio:
-    def __init__(self, func, left, right, e):
+    def __init__(self, func):
         self._func = func
-        self._e = e
-        self._l = left
-        self._r = right
 
     @staticmethod
     def do_method(func, left, right, e):
@@ -28,7 +25,7 @@ class GoldenRatio:
                 x2 = right - resphi * (right - left)
                 f1 = f2
                 f2 = func(x2)
-        return x1 + x2 / 2, i, right - left
+        return (x1 + x2) / 2, i, right - left
 
-    def do(self):
-        return GoldenRatio.do_method(self._func, self._l, self._r, self._e)
+    def do(self, left, right, e):
+        return GoldenRatio.do_method(self._func, left, right, e)

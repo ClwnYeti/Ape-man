@@ -1,9 +1,6 @@
 class Dichotomy:
-    def __init__(self, func, left, right, e):
+    def __init__(self, func):
         self._func = func
-        self._e = e
-        self._l = left
-        self._r = right
 
     @staticmethod
     def do_method(func, left, right, e):
@@ -17,8 +14,8 @@ class Dichotomy:
                 right = middle
             else:
                 left = middle
-        return left + right / 2, i, right - left
+        return (left + right) / 2, i, right - left
 
-    def do(self):
-        return Dichotomy.do_method(self._func, self._l, self._r, self._e)
+    def do(self, left, right, e):
+        return Dichotomy.do_method(self._func, left, right, e)
 
