@@ -52,4 +52,4 @@ class Fibonacci:
         return Fibonacci.do_method(self._func, left, right, e)
 
 
-print(Fibonacci.do_method((lambda x: x**2 * math.e ** math.sin(x)), -1, 1, 0.01))
+print(Fibonacci.do_method((lambda x: x**2 * math.e ** math.sin(x)), -math.pi + 0.00001, math.pi, 0.00001))

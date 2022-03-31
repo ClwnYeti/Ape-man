@@ -28,9 +28,9 @@ class Brent:
             g = d_prv / 2
             d_prv = d_cur
             u = Brent._top_of_parabola(x, w, v, fx, fw, fv)
-            if u is None or abs(u - x) > g or u < left or u > right:
+            if u is None or abs(u - x) > g/2 or u < left or u > right:
                 if x < (left + right) / 2:
-                    u = x + r * (right + x)
+                    u = x + r * (right - x)
                     d_prv = right - x
                 else:
                     u = x - r * (x - left)
@@ -68,5 +68,5 @@ class Brent:
         return Brent.do_method(self._func, left, right, e)
 
 
-print(Brent.do_method((lambda x: x**2 * math.e ** math.sin(x)), -1, 1, 0.01))
+print(Brent.do_method((lambda x: x**2 * math.e ** math.sin(x)), -math.pi + 0.00001, math.pi, 0.00001))
 
