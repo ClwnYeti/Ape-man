@@ -27,10 +27,6 @@ def func2(point):
     return (point[0] + 2 * point[1] - 7) ** 2 + (2 * point[0] + point[1] - 5) ** 2
 
 
-def func3(point):
-    return 0.26 * (point[0] ** 2 + point[1] ** 2) - 0.48 * point[0] * point[1]
-
-
 start_point = [1., 1.]
 eps = 1e-7
 # fig = plt.figure()
@@ -113,44 +109,4 @@ draw(-1, 5, func1, [i[0] for i in func2_StepGoldenRatio[2]], [i[1] for i in func
 #        [i[1] for i in func2_StepGoldenRatio[2]],
 #        [func1(i) for i in func2_StepGoldenRatio[2]])
 # plt.savefig("func2_StepGoldenRatio.png")
-# a.clear()
-
-func3_StepConst = GradientDescent.do_descent(func3, StepGoldenRatio(10), eps, start_point)
-print(f"Name: func3_StepConst, Count of Steps: {func3_StepConst[0]}, Minimal_point: {func3_StepConst[1]}")
-draw(-2, 2, func1, [i[0] for i in func3_StepConst[2]], [i[1] for i in func3_StepConst[2]], "func3_StepConst")
-# a.set_title("func3_StepConst")
-# a.plot([i[0] for i in func3_StepConst[2]],
-#        [i[1] for i in func3_StepConst[2]],
-#        [func1(i) for i in func3_StepConst[2]])
-# plt.savefig("func3_StepConst.png")
-# a.clear()
-
-func3_StepSplit = GradientDescent.do_descent(func3, StepSplit(10, 0.5), eps, start_point)
-print(f"Name: func3_StepSplit, Count of Steps: {func3_StepSplit[0]}, Minimal_point: {func3_StepSplit[1]}")
-draw(-2, 2, func1, [i[0] for i in func3_StepSplit[2]], [i[1] for i in func3_StepSplit[2]], "func3_StepSplit")
-# a.set_title("func3_StepSplit")
-# a.plot([i[0] for i in func3_StepSplit[2]],
-#        [i[1] for i in func3_StepSplit[2]],
-#        [func1(i) for i in func3_StepSplit[2]])
-# plt.savefig("func3_StepSplit.png")
-# a.clear()
-
-func3_StepFibonacci = GradientDescent.do_descent(func3, StepFibonacci(10), eps, start_point)
-print(f"Name: func3_StepFibonacci, Count of Steps: {func3_StepFibonacci[0]}, Minimal_point: {func3_StepFibonacci[1]}")
-draw(-2, 2, func1, [i[0] for i in func3_StepFibonacci[2]], [i[1] for i in func3_StepFibonacci[2]], "func3_StepFibonacci")
-# a.set_title("func3_StepFibonacci")
-# a.plot([i[0] for i in func3_StepFibonacci[2]],
-#        [i[1] for i in func3_StepFibonacci[2]],
-#        [func1(i) for i in func3_StepFibonacci[2]])
-# plt.savefig("func3_StepFibonacci.png")
-# a.clear()
-
-func3_StepGoldenRatio = GradientDescent.do_descent(func3, StepGoldenRatio(10), eps, start_point)
-print(f"Name: func3_StepGoldenRatio, Count of Steps: {func3_StepGoldenRatio[0]}, Minimal_point: {func3_StepGoldenRatio[1]}")
-draw(-2, 2, func1, [i[0] for i in func3_StepGoldenRatio[2]], [i[1] for i in func3_StepGoldenRatio[2]], "func3_StepGoldenRatio")
-# a.set_title("func3_StepGoldenRatio")
-# a.plot([i[0] for i in func3_StepGoldenRatio[2]],
-#        [i[1] for i in func3_StepGoldenRatio[2]],
-#        [func1(i) for i in func3_StepGoldenRatio[2]])
-# plt.savefig("func3_StepGoldenRatio.png")
 # a.clear()
