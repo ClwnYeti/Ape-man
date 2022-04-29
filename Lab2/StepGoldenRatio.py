@@ -6,4 +6,5 @@ class StepGoldenRatio:
         self.step = step
 
     def get_step(self, func, point, grad, e):
-        return GoldenRatio.do_method(lambda step: func(point - step * grad), 0, self.step, e)[0]
+        step = GoldenRatio.do_method(lambda step: func(point - step * grad), 0, self.step, e)[0]
+        return step

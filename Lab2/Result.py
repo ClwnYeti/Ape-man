@@ -5,7 +5,7 @@ from StepConst import StepConst
 from StepSplit import StepSplit
 from StepFibonacci import StepFibonacci
 from StepGoldenRatio import StepGoldenRatio
-from FletcherReeves import fletcher_reeves_method
+from ConjugateGradient import ConjugateGradient
 
 
 def draw(a, b, func, points_x, points_y, name):
@@ -30,93 +30,55 @@ def func2(point):
 
 start_point1 = [1., 1.]
 start_point2 = [-1., -1.]
+step = 100
 eps = 1e-7
-# fig = plt.figure()
-# a = fig.add_axes([0, 0, 1, 1], projection='3d')
-func1_StepConst = GradientDescent.do_descent(func1, StepConst(10), eps, start_point1)
+func1_StepConst = GradientDescent.do_descent(func1, StepConst(step), eps, start_point1)
 print(f"Name: func1_StepConst, Count of Steps: {func1_StepConst[0]}, Minimal_point: {func1_StepConst[1]}")
 draw(-2, 2, func1, [i[0] for i in func1_StepConst[2]], [i[1] for i in func1_StepConst[2]], "func1_StepConst")
-# a.set_title("func1_StepConst")
-# a.plot([i[0] for i in func1_StepConst[2]],
-#        [i[1] for i in func1_StepConst[2]],
-#        [func1(i) for i in func1_StepConst[2]])
-# plt.savefig("func1_StepConst.png")
-# a.clear()
 
-func1_StepSplit = GradientDescent.do_descent(func1, StepSplit(10, 0.5), eps, start_point1)
+func1_StepSplit = GradientDescent.do_descent(func1, StepSplit(step, 0.5), eps, start_point1)
 print(f"Name: func1_StepSplit, Count of Steps: {func1_StepSplit[0]}, Minimal_point: {func1_StepSplit[1]}")
 draw(-2, 2, func1, [i[0] for i in func1_StepSplit[2]], [i[1] for i in func1_StepSplit[2]], "func1_StepSplit")
-# a.set_title("func1_StepSplit")
-# a.plot([i[0] for i in func1_StepSplit[2]],
-#        [i[1] for i in func1_StepSplit[2]],
-#        [func1(i) for i in func1_StepSplit[2]])
-# plt.savefig("func1_StepSplit.png")
-# a.clear()
 
-func1_StepFibonacci = GradientDescent.do_descent(func1, StepFibonacci(10), eps, start_point1)
+func1_StepFibonacci = GradientDescent.do_descent(func1, StepFibonacci(step), eps, start_point1)
 print(f"Name: func1_StepFibonacci, Count of Steps: {func1_StepFibonacci[0]}, Minimal_point: {func1_StepFibonacci[1]}")
 draw(-2, 2, func1, [i[0] for i in func1_StepFibonacci[2]], [i[1] for i in func1_StepFibonacci[2]],
      "func1_StepFibonacci")
-# a.set_title("func1_StepFibonacci")
-# a.plot([i[0] for i in func1_StepFibonacci[2]],
-#        [i[1] for i in func1_StepFibonacci[2]],
-#        [func1(i) for i in func1_StepFibonacci[2]])
-# plt.savefig("func1_StepFibonacci.png")
-# a.clear()
 
-func1_StepGoldenRatio = GradientDescent.do_descent(func1, StepGoldenRatio(10), eps, start_point1)
+func1_StepGoldenRatio = GradientDescent.do_descent(func1, StepGoldenRatio(step), eps, start_point1)
 print(
     f"Name: func1_StepGoldenRatio, Count of Steps: {func1_StepGoldenRatio[0]}, Minimal_point: {func1_StepGoldenRatio[1]}")
 draw(-2, 2, func1, [i[0] for i in func1_StepGoldenRatio[2]], [i[1] for i in func1_StepGoldenRatio[2]],
      "func1_StepGoldenRatio")
-# a.set_title("func1_StepGoldenRatio")
-# a.plot([i[0] for i in func1_StepGoldenRatio[2]],
-#        [i[1] for i in func1_StepGoldenRatio[2]],
-#        [func1(i) for i in func1_StepGoldenRatio[2]])
-# plt.savefig("func1_StepGoldenRatio.png")
-# a.clear()
 
-func2_StepConst = GradientDescent.do_descent(func2, StepConst(10), eps, start_point2)
+func1_ConjugateGradient = ConjugateGradient.do_descent(func1, StepGoldenRatio(step), eps, start_point1)
+print(
+    f"Name: func1_ConjugateGradient, Count of Steps: {func1_ConjugateGradient[0] - 1}, Minimal_point: {func1_ConjugateGradient[1]}")
+draw(-2, 2, func1, [i[0] for i in func1_ConjugateGradient[2]], [i[1] for i in func1_ConjugateGradient[2]],
+     "func1_ConjugateGradient")
+
+
+func2_StepConst = GradientDescent.do_descent(func2, StepConst(step), eps, start_point2)
 print(f"Name: func2_StepConst, Count of Steps: {func2_StepConst[0]}, Minimal_point: {func2_StepConst[1]}")
 draw(-2, 2, func1, [i[0] for i in func2_StepConst[2]], [i[1] for i in func2_StepConst[2]], "func2_StepConst")
-# a.set_title("func2_StepConst")
-# a.plot([i[0] for i in func2_StepConst[2]],
-#        [i[1] for i in func2_StepConst[2]],
-#        [func1(i) for i in func2_StepConst[2]])
-# plt.savefig("func2_StepConst.png")
-# a.clear()
 
-func2_StepSplit = GradientDescent.do_descent(func2, StepSplit(10, 0.5), eps, start_point2)
+func2_StepSplit = GradientDescent.do_descent(func2, StepSplit(step, 0.5), eps, start_point2)
 print(f"Name: func2_StepSplit, Count of Steps: {func2_StepSplit[0]}, Minimal_point: {func2_StepSplit[1]}")
 draw(-2, 2, func1, [i[0] for i in func2_StepSplit[2]], [i[1] for i in func2_StepSplit[2]], "func2_StepSplit")
-# a.set_title("func2_StepSplit")
-# a.plot([i[0] for i in func2_StepSplit[2]],
-#        [i[1] for i in func2_StepSplit[2]],
-#        [func1(i) for i in func2_StepSplit[2]])
-# plt.savefig("func2_StepSplit.png")
-# a.clear()
 
-func2_StepFibonacci = GradientDescent.do_descent(func2, StepFibonacci(10), eps, start_point2)
+func2_StepFibonacci = GradientDescent.do_descent(func2, StepFibonacci(step), eps, start_point2)
 print(f"Name: func2_StepFibonacci, Count of Steps: {func2_StepFibonacci[0]}, Minimal_point: {func2_StepFibonacci[1]}")
 draw(-2, 2, func1, [i[0] for i in func2_StepFibonacci[2]], [i[1] for i in func2_StepFibonacci[2]],
      "func2_StepFibonacci")
-# a.set_title("func2_StepFibonacci")
-# a.plot([i[0] for i in func2_StepFibonacci[2]],
-#        [i[1] for i in func2_StepFibonacci[2]],
-#        [func1(i) for i in func2_StepFibonacci[2]])
-# plt.savefig("func2_StepFibonacci.png")
-# a.clear()
 
-func2_StepGoldenRatio = GradientDescent.do_descent(func2, StepGoldenRatio(10), eps, start_point2)
+func2_StepGoldenRatio = GradientDescent.do_descent(func2, StepGoldenRatio(step), eps, start_point2)
 print(
     f"Name: func2_StepGoldenRatio, Count of Steps: {func2_StepGoldenRatio[0]}, Minimal_point: {func2_StepGoldenRatio[1]}")
 draw(-2, 2, func1, [i[0] for i in func2_StepGoldenRatio[2]], [i[1] for i in func2_StepGoldenRatio[2]],
      "func2_StepGoldenRatio")
-# a.set_title("func2_StepGoldenRatio")
-# a.plot([i[0] for i in func2_StepGoldenRatio[2]],
-#        [i[1] for i in func2_StepGoldenRatio[2]],
-#        [func1(i) for i in func2_StepGoldenRatio[2]])
-# plt.savefig("func2_StepGoldenRatio.png")
-# a.clear()
 
-reeves = fletcher_reeves_method(func1, )
+func2_ConjugateGradient = ConjugateGradient.do_descent(func2, StepGoldenRatio(step), eps, start_point1)
+print(
+    f"Name: func2_ConjugateGradient, Count of Steps: {func2_ConjugateGradient[0] - 1}, Minimal_point: {func2_ConjugateGradient[1]}")
+draw(-2, 2, func2, [i[0] for i in func2_ConjugateGradient[2]], [i[1] for i in func2_ConjugateGradient[2]],
+     "func2_ConjugateGradient")
