@@ -5,6 +5,7 @@ from StepConst import StepConst
 from StepSplit import StepSplit
 from StepFibonacci import StepFibonacci
 from StepGoldenRatio import StepGoldenRatio
+from FletcherReeves import fletcher_reeves_method
 
 
 def draw(a, b, func, points_x, points_y, name):
@@ -117,3 +118,5 @@ draw(-2, 2, func1, [i[0] for i in func2_StepGoldenRatio[2]], [i[1] for i in func
 #        [func1(i) for i in func2_StepGoldenRatio[2]])
 # plt.savefig("func2_StepGoldenRatio.png")
 # a.clear()
+
+reeves = fletcher_reeves_method(func1, )
