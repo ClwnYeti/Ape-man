@@ -68,5 +68,5 @@ class Brent:
         return Brent.do_method(self._func, left, right, e)
 
 
-print(Brent.do_method((lambda x: x**2 * math.e ** math.sin(x)), -math.pi + 0.00001, math.pi, 0.00001))
+
 
