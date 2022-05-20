@@ -3,20 +3,22 @@ import numpy as np
 
 class SolveLU:
     @staticmethod
-    def solve_LU(lu_matrix, b):
-        """Solve system of equations from given LU-matrix and vector b of absolute terms.
-        :param lu_matrix: numpy LU-matrix
-        :param b: numpy matrix of absolute terms [n x 1]
-        :return: numpy matrix of answers [n x 1]
-        """
-        # get supporting vector y
-        y = np.matrix(np.zeros([lu_matrix.shape[0], 1]))
-        for i in range(y.shape[0]):
-            y[i, 0] = b[i, 0] - lu_matrix[i, :i] * y[:i]
+    def solve_LU(L, U, b):
+        n = L.n
+        # (5) Perform substitution Ly=b
+        y = [0.0 in range(n)]
+        for i in range(0, n, 1):
+            y[i] = b[i] / float(L[i, i])
+            for k in range(0, i, 1):
+                y[i] -= y[k] * L[i, k]
 
-        # get vector of answers x
-        x = np.matrix(np.zeros([lu_matrix.shape[0], 1]))
-        for i in range(1, x.shape[0] + 1):
-            x[-i, 0] = (y[-i] - lu_matrix[-i, -i:] * x[-i:, 0]) / lu_matrix[-i, -i]
+        n = U.n
+
+        # (6) Perform substitution Ux=y
+        x = [0 in range(n)]
+        for i in range(n - 1, -1, -1):
+            x[i] = y[i] / float(U[i, i])
+            for k in range(i - 1, -1, -1):
+                U[i] -= x[i] * U[i, k]
 
         return x
