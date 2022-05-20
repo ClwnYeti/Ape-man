@@ -2,7 +2,7 @@ import numpy as np
 
 
 class SolveLU:
-
+    @staticmethod
     def solve_LU(lu_matrix, b):
         """Solve system of equations from given LU-matrix and vector b of absolute terms.
         :param lu_matrix: numpy LU-matrix

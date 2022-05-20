@@ -1,43 +1,22 @@
-import numpy as np
+from Matrix import Matrix
+
 
 class LUDecomposition:
+    @staticmethod
     def decompose_to_LU(a):
-        """Decompose matrix of coefficients to L and U matrices.
-         L and U triangular matrices will be represented in a single nxn matrix.
-        :param a: numpy matrix of coefficients
-        :return: numpy LU matrix
-        """
-        # create emtpy LU-matrix
-        lu_matrix = np.matrix(np.zeros([a.shape[0], a.shape[1]]))
-        n = a.shape[0]
+        L = Matrix(a.n)
+        U = Matrix(a.n).get_values_from_matrix(a)
+        for i in range(a.n):
+            for j in range(a.n):
+                L[j][i] = U[j][i] / U[i][i]
 
-        for k in range(n):
-            # calculate all residual k-row elements
-            for j in range(k, n):
-                lu_matrix[k, j] = a[k, j] - lu_matrix[k, :k] * lu_matrix[:k, j]
-            # calculate all residual k-column elemetns
-            for i in range(k + 1, n):
-                lu_matrix[i, k] = (a[i, k] - lu_matrix[i, : k] * lu_matrix[: k, k]) / lu_matrix[k, k]
+        for k in range(a.n):
+            for i in range(a.n):
+                for j in range(a.n):
+                    L[j][i] = U[j][i] / U[i][i]
 
-        return lu_matrix
+            for i in range(k, a.n):
+                for j in range(k - 1, a.n):
+                    U[i][j] = U[i][j]-L[i][k-1] * U[k-1][j]
 
-    def get_L(m):
-        """Get triangular L matrix from a single LU-matrix
-        :param m: numpy LU-matrix
-        :return: numpy triangular L matrix
-        """
-        L = m.copy()
-        for i in range(L.shape[0]):
-            L[i, i] = 1
-            L[i, i + 1:] = 0
-        return np.matrix(L)
-
-    def get_U(m):
-        """Get triangular U matrix from a single LU-matrix
-        :param m: numpy LU-matrix
-        :return: numpy triangular U matrix
-        """
-        U = m.copy()
-        for i in range(1, U.shape[0]):
-            U[i, :i] = 0
-        return U
+        return L, U
