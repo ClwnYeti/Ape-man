@@ -6,42 +6,41 @@ from scipy.sparse import csr_matrix
 
 from LUDecomposition import LUDecomposition
 from Lab3.HilbertSolution import HilbertSolution
-from Lab3.Matrix import Matrix
-from Lab3.SparseMatrix import SparseMatrix
 from SolveLU import SolveLU
 
-A3 = SparseMatrix(3,3).get_values_from_matrix(np.random.randint(10, size=(3, 3)))
+A3 = [[1, 0, 3], [10, 4, 0], [3, 5, 4]]
 print("A 3x3:")
-print(A3)
+pprint.pprint(A3)
 
 L, U = LUDecomposition.decompose_to_LU(A3)
 
 print("L:")
-print(L)
+pprint.pprint(L)
 
 print("U:")
-print(U)
+pprint.pprint(U)
 
-A4 = SparseMatrix(4,4).get_values_from_matrix(np.random.randint(10, size=(4, 4)))
+A4 = [[1, 0, 3, 5], [10, 4, 0, 6], [3, 5, 4, 7], [1, 2, 3, 7]]
 print("A 4x4:")
-print(A4)
+pprint.pprint(A4)
 
 L, U = LUDecomposition.decompose_to_LU(A4)
 
 print("L:")
-print(L)
+pprint.pprint(L)
 
 print("U:")
-print(U)
+pprint.pprint(U)
 
 # 1
 startTime = time.time()  # время начала замера
 
-HilbertSolution.solve_LU(10)
+print(HilbertSolution.solve_LU(2))
 
 endTime = time.time()  # время конца замера
 totalTime = endTime - startTime  # вычисляем затраченное время
 print(totalTime)
+
 #
 # # 2
 # startTime = time.time()  # время начала замера
