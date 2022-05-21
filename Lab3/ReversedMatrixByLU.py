@@ -19,7 +19,7 @@ class ReversedMatrixByLU:
         for i in range(n):
             reversedMatrix[0:, i] = SolveLU.solve_LU(L2, U2, y[0:, i])
 
-        return reversedMatrix
+        return np.matrix(reversedMatrix)
 
     @staticmethod
     def _get_identity_matrix(n):
