@@ -6,7 +6,7 @@ class LUDecomposition:
     def decompose_to_LU(A):
         n = len(A)
         L = np.zeros((n, n))
-        U = A
+        U = [[A[i][j] for j in range(n)] for i in range(n)]
         for i in range(n):
             for j in range(i, n):
                 L[j][i] = U[j][i] / U[i][i]
