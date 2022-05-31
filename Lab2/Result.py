@@ -74,7 +74,7 @@ draw(-2, 2, func1, [i[0] for i in func2_StepFibonacci[2]], [i[1] for i in func2_
 func2_StepGoldenRatio = GradientDescent.do_descent(func2, StepGoldenRatio(step), eps, start_point2)
 print(
     f"Name: func2_StepGoldenRatio, Count of Steps: {func2_StepGoldenRatio[0]}, Minimal_point: {func2_StepGoldenRatio[1]}")
-draw(-2, 2, func1, [i[0] for i in func2_StepGoldenRatio[2]], [i[1] for i in func2_StepGoldenRatio[2]],
+draw(-2, 2, func2, [i[0] for i in func2_StepGoldenRatio[2]], [i[1] for i in func2_StepGoldenRatio[2]],
      "func2_StepGoldenRatio")
 
 func2_ConjugateGradient = ConjugateGradient.do_descent(func2, StepGoldenRatio(step), eps, start_point1)
