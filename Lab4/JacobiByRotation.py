@@ -14,8 +14,12 @@ class JacobiByRotation:
         while 1:  # Jacobi rotation loop
             max_element, max_i, max_j = JacobiByRotation._maxElem(matrix_copy)
 
+            if (iterations == 1280):
+                x = max_element
+
             if max_element < accuracy:
                 print(iterations)
+                print(x / max_element)
                 vectors = ndarray.tolist(vectors.T)
                 eigenvalues = ndarray.tolist(matrix_copy.diagonal())
                 return eigenvalues, vectors
